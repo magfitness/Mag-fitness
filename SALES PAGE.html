@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAG Fitness — Premium Training Programs | Matthew Aiden Gordon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #0E0E0E;
+  --black2:  #141414;
+  --black3:  #1A1A1A;
+  --black4:  #222222;
+  --bone:    #F5F1EB;
+  --bone-dim:#C8C3BC;
+  --ox:      #6B1F1F;
+  --ox-deep: #4A1414;
+  --ox-light:#8B2F2F;
+  --mid:     #6B6B6B;
+  --light:   #D4CFC7;
+  --btc:     #F7931A;
+  --white:   #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--bone);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── NOISE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(14,14,14,.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(245,241,235,.06);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: .12em;
+  color: var(--bone);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-logo-dot { color: var(--ox); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color .2s;
+  cursor: pointer;
+}
+.nav-links a:hover { color: var(--bone); }
+.nav-cta {
+  background: var(--ox) !important;
+  color: var(--bone) !important;
+  padding: 7px 20px !important;
+}
+.nav-cta:hover { background: var(--ox-light) !important; color: var(--bone) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(107,31,31,.04) 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(107,31,31,.025) 120px);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  text-align: center;
+}
+.eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: var(--ox-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.eyebrow::before, .eyebrow::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--ox);
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(54px, 10vw, 108px);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--ox-light);
+}
+.hero-subline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 8vw, 92px);
+  letter-spacing: .08em;
+  display: block;
+  margin-bottom: 36px;
+  color: var(--bone);
+}
+.hero-desc {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.85;
+  max-width: 480px;
+  margin: 0 auto 48px;
+}
+.hero-desc strong { color: var(--bone); font-weight: 500; }
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.btn-primary {
+  background: var(--ox);
+  color: var(--bone);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 15px 40px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: var(--ox-light); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--bone);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 14px 40px;
+  border: 1px solid rgba(245,241,235,.15);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color: var(--ox); color: var(--ox-light); }
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding-top: 48px;
+  border-top: 1px solid rgba(245,241,235,.07);
+}
+.stat { text-align: center; }
+.stat-n {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  color: var(--ox-light);
+  line-height: 1;
+  display: block;
+}
+.stat-l {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-top: 6px;
+}
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 96px 24px; }
+.full-bg {
+  background: var(--black2);
+  border-top: 1px solid rgba(245,241,235,.05);
+  border-bottom: 1px solid rgba(245,241,235,.05);
+}
+hr.rule {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ox), transparent);
+  opacity: .35;
+}
+.sec-eye {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--ox-light);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-eye::after { content: ''; width: 36px; height: 1px; background: var(--ox); }
+.sec-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(34px, 4.5vw, 54px);
+  font-weight: 400;
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+.sec-title em { font-style: italic; color: var(--ox-light); }
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.about-text p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--mid);
+  margin-bottom: 18px;
+}
+.about-text p strong { color: var(--bone); font-weight: 500; }
+.cred-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 28px;
+}
+.cred {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  background: var(--black3);
+  border-left: 2px solid var(--ox);
+}
+.cred-text {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .03em;
+  color: var(--bone);
+}
+.about-card {
+  background: var(--black3);
+  border: 1px solid rgba(245,241,235,.07);
+  border-top: 2px solid var(--ox);
+  padding: 38px;
+}
+.ac-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--bone);
+  margin-bottom: 2px;
+}
+.ac-role {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ox-light);
+  margin-bottom: 24px;
+}
+.ac-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--mid);
+  line-height: 1.7;
+  border-left: 2px solid var(--ox);
+  padding-left: 18px;
+  margin-bottom: 26px;
+}
+.ac-stats {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 22px;
+  border-top: 1px solid rgba(245,241,235,.07);
+}
+.ac-stat { text-align: center; }
+.ac-stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: .04em;
+  color: var(--ox-light);
+  display: block;
+  line-height: 1;
+}
+.ac-stat-l {
+  font-size: 8px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 3px;
+}
+
+/* ── PROGRAMS ── */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 2px;
+  margin-top: 52px;
+}
+.prog-card {
+  background: var(--black2);
+  border: 1px solid rgba(245,241,235,.07);
+  padding: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s, transform .2s;
+}
+.prog-card:hover { border-color: var(--ox); transform: translateY(-3px); z-index: 2; }
+.prog-card.featured {
+  border-color: rgba(107,31,31,.4);
+  background: rgba(107,31,31,.03);
+}
+.feat-badge {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  background: var(--ox);
+  color: var(--bone);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  padding: 4px 12px;
+  text-transform: uppercase;
+}
+.prog-code {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .3em;
+  color: var(--ox);
+  margin-bottom: 12px;
+}
+.prog-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--bone);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.prog-tagline {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--mid);
+  margin-bottom: 20px;
+  font-family: 'DM Serif Display', serif;
+}
+.prog-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.prog-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 10px;
+  background: var(--black);
+}
+.prog-row-k {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.prog-row-v { font-size: 9.5px; color: var(--bone); }
+.prog-inc { margin-bottom: 20px; }
+.prog-inc-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+.prog-inc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.prog-inc-list li {
+  font-size: 11px;
+  color: var(--mid);
+  display: flex;
+  gap: 8px;
+  line-height: 1.5;
+}
+.prog-inc-list li::before {
+  content: '—';
+  color: var(--ox);
+  font-size: 9px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.prog-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid rgba(245,241,235,.07);
+  margin-top: auto;
+  gap: 12px;
+}
+.prog-price-eft {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: .04em;
+  color: var(--bone);
+  line-height: 1;
+}
+.prog-price-lbl {
+  font-size: 8px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 2px;
+}
+.prog-price-btc {
+  font-size: 10px;
+  color: var(--btc);
+  font-weight: 600;
+  margin-top: 5px;
+}
+.prog-btn {
+  background: transparent;
+  color: var(--ox-light);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border: 1px solid var(--ox);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+  white-space: nowrap;
+}
+.prog-btn:hover { background: var(--ox); color: var(--bone); }
+
+/* ── BUNDLE ── */
+.bundle {
+  background: var(--black2);
+  border: 1px solid rgba(107,31,31,.3);
+  border-top: 2px solid var(--ox);
+  padding: 52px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2px;
+}
+.bundle-glow {
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(107,31,31,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.bundle-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 52px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.bundle-eye {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--ox-light);
+  margin-bottom: 10px;
+}
+.bundle-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.05;
+  margin-bottom: 6px;
+}
+.bundle-title strong {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  display: block;
+  letter-spacing: .08em;
+  font-size: .92em;
+  color: var(--bone);
+}
+.bundle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 22px;
+}
+.btag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  padding: 4px 10px;
+  background: rgba(107,31,31,.1);
+  border: 1px solid rgba(107,31,31,.25);
+  color: var(--ox-light);
+  text-transform: uppercase;
+}
+.bundle-saving {
+  font-size: 12px;
+  color: var(--mid);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.save-pill {
+  background: var(--ox);
+  color: var(--bone);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  padding: 2px 10px;
+}
+.bundle-price-block {
+  text-align: center;
+  flex-shrink: 0;
+  min-width: 190px;
+}
+.b-was {
+  font-size: 11px;
+  color: var(--mid);
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+.b-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  letter-spacing: .04em;
+  color: var(--bone);
+  line-height: 1;
+  display: block;
+}
+.b-lbl {
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 8px;
+}
+.b-btc {
+  font-size: 12px;
+  color: var(--btc);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+/* ── HOW IT WORKS ── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 52px;
+}
+.step {
+  background: var(--black2);
+  border: 1px solid rgba(245,241,235,.06);
+  padding: 32px 26px;
+  transition: border-color .25s;
+}
+.step:hover { border-color: rgba(107,31,31,.4); }
+.step-n {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  color: rgba(107,31,31,.15);
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+.step-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 10px;
+}
+.step-desc { font-size: 12.5px; line-height: 1.75; color: var(--mid); }
+.step-note {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(245,241,235,.06);
+  font-size: 10px;
+  color: var(--ox-light);
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+/* ── ORDER FORM ── */
+.order-section { max-width: 760px; margin: 0 auto; }
+.order-form {
+  background: var(--black2);
+  border: 1px solid rgba(245,241,235,.07);
+  border-top: 2px solid var(--ox);
+  padding: 48px;
+  position: relative;
+  margin-top: 48px;
+}
+.form-group { margin-bottom: 24px; }
+.form-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ox-light);
+  margin-bottom: 10px;
+  display: block;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: var(--black);
+  border: 1px solid rgba(245,241,235,.1);
+  color: var(--bone);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--ox);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(107,107,107,.6); }
+.form-textarea { resize: vertical; min-height: 80px; }
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%236B1F1F' d='M5 7L0 0h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.payment-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(245,241,235,.1);
+  overflow: hidden;
+}
+.payment-toggle input { display: none; }
+.payment-toggle label {
+  padding: 18px 16px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--black);
+  transition: background .2s, color .2s;
+  border-right: 1px solid rgba(245,241,235,.1);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.payment-toggle label:last-of-type { border-right: none; }
+.payment-toggle input:checked + label { color: var(--bone); background: var(--ox); }
+.payment-toggle .btc-opt input:checked + label { background: var(--btc); color: var(--black); }
+.toggle-sub { display: block; font-size: 9px; letter-spacing: .1em; font-weight: 500; margin-top: 4px; opacity: .8; }
+.order-summary {
+  background: var(--black);
+  border: 1px solid rgba(245,241,235,.08);
+  padding: 22px 24px;
+  margin: 28px 0;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--mid);
+}
+.summary-row.total {
+  padding-top: 14px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(245,241,235,.08);
+}
+.summary-row.total .summary-key {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+.summary-row.total .summary-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: .04em;
+  color: var(--bone);
+  line-height: 1;
+}
+.summary-row.total .summary-val.btc { color: var(--btc); }
+.summary-val { color: var(--bone); font-weight: 500; }
+.discount-row { color: var(--btc) !important; }
+.discount-row .summary-val { color: var(--btc); }
+.pay-panel {
+  background: var(--black);
+  border: 1px solid rgba(245,241,235,.08);
+  padding: 24px;
+  margin-top: 24px;
+  display: none;
+}
+.pay-panel.active { display: block; }
+.pay-panel.btc { border-color: rgba(247,147,26,.2); background: rgba(247,147,26,.015); }
+.pay-panel-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ox-light);
+  margin-bottom: 14px;
+}
+.pay-panel.btc .pay-panel-title { color: var(--btc); }
+.pay-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(245,241,235,.06);
+  font-size: 13px;
+}
+.pay-detail:last-child { border-bottom: none; }
+.pay-detail-key {
+  color: var(--mid);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.pay-detail-val {
+  color: var(--bone);
+  font-weight: 500;
+  text-align: right;
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+.pay-detail-val.acct {
+  color: var(--bone);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .04em;
+}
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  color: var(--ox-light);
+  border: 1px solid var(--ox);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background .2s, color .2s;
+}
+.copy-btn:hover { background: var(--ox); color: var(--bone); }
+.copy-btn.btc { color: var(--btc); border-color: var(--btc); }
+.copy-btn.btc:hover { background: var(--btc); color: var(--black); }
+.btn-submit {
+  width: 100%;
+  background: var(--ox);
+  color: var(--bone);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background .2s;
+  margin-top: 8px;
+}
+.btn-submit:hover { background: var(--ox-light); }
+.form-note {
+  text-align: center;
+  font-size: 11px;
+  color: var(--mid);
+  margin-top: 14px;
+  line-height: 1.7;
+}
+.form-note strong { color: var(--ox-light); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(245,241,235,.06);
+  padding: 52px 48px;
+  text-align: center;
+}
+.foot-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: .18em;
+  color: var(--bone);
+  margin-bottom: 4px;
+}
+.foot-logo span { color: var(--ox-light); }
+.foot-tag {
+  font-family: 'DM Serif Display', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--mid);
+  margin-bottom: 22px;
+}
+.foot-rule { width: 48px; height: 1px; background: var(--ox); margin: 0 auto 22px; }
+.foot-copy { font-size: 11px; color: var(--mid); line-height: 1.85; }
+.foot-social { margin: 18px 0; }
+.foot-social a {
+  color: var(--ox-light);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .about-grid, .form-row { grid-template-columns: 1fr; }
+  .bundle-inner { grid-template-columns: 1fr; gap: 32px; }
+  .bundle { padding: 36px 24px; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .wrap { padding: 72px 20px; }
+  .order-form { padding: 32px 24px; }
+}
+@media (max-width: 600px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .programs-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 32px; }
+  .payment-toggle { grid-template-columns: 1fr; }
+  .payment-toggle label { border-right: none; border-bottom: 1px solid rgba(245,241,235,.1); }
+  .payment-toggle label:last-of-type { border-bottom: none; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content { animation: fadeUp .8s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MAG<span class="nav-logo-dot"> ·</span> FITNESS</a>
+  <ul class="nav-links">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#order" class="nav-cta">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Cape Town, South Africa &nbsp;·&nbsp; Built With Purpose</div>
+    <h1>Structure beats<br><em>effort.</em></h1>
+    <span class="hero-subline">Every. Single. Time.</span>
+    <p class="hero-desc">
+      <strong>No guesswork. No generic plans. No filler.</strong><br>
+      Structured 30-day systems built by Matthew Aiden Gordon — a Sports Science coach who gives you the exact system your body needs to transform.
+    </p>
+    <div class="hero-btns">
+      <a href="#programs" class="btn-primary">View All Programs</a>
+      <a href="#order" class="btn-ghost">Order Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">5</span><span class="stat-l">Programs</span></div>
+      <div class="stat"><span class="stat-n">30</span><span class="stat-l">Days Each</span></div>
+      <div class="stat"><span class="stat-n">20%</span><span class="stat-l">Bitcoin Discount</span></div>
+      <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Results When You Follow It</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ABOUT -->
+<section id="about" class="full-bg">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-eye">Your Coach</div>
+        <h2 class="sec-title">Built by someone who <em>understands</em> the science</h2>
+        <p>I'm <strong>Matthew Aiden Gordon</strong> — a Sports Science student and independent fitness coach based in Cape Town. I built MAG Fitness because I was tired of watching people waste months on random workouts that get no results.</p>
+        <p>Every program I write is <strong>structured, progressive, and purposeful.</strong> There's a reason for every exercise, every set, every rep range. Discipline isn't required. Compliance is.</p>
+        <p>I've worked with real clients across fat loss, muscle building, and athletic conditioning. I understand how the body adapts — and exactly how to programme for it.</p>
+        <div class="cred-list">
+          <div class="cred"><span class="cred-text">Sports Science — University Level Training</span></div>
+          <div class="cred"><span class="cred-text">Specialisation: Fat Loss · Muscle Building · Athletic Performance</span></div>
+          <div class="cred"><span class="cred-text">General Population Coaching — Real Clients, Real Results</span></div>
+          <div class="cred"><span class="cred-text">Cape Town, South Africa — Delivering Worldwide</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="about-card">
+          <div class="ac-name">Matthew Aiden Gordon</div>
+          <div class="ac-role">Founder · MAG Fitness · Cape Town</div>
+          <div class="ac-quote">"I don't sell workouts. I sell systems. Follow the system and the result is inevitable."</div>
+          <div class="ac-stats">
+            <div class="ac-stat"><span class="ac-stat-n">5</span><span class="ac-stat-l">Programs</span></div>
+            <div class="ac-stat"><span class="ac-stat-n">30</span><span class="ac-stat-l">Days Each</span></div>
+            <div class="ac-stat"><span class="ac-stat-n">100%</span><span class="ac-stat-l">Structured</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="wrap">
+    <div class="sec-eye">The Programs</div>
+    <h2 class="sec-title">Choose your <em>system</em></h2>
+    <p style="font-size:14px;color:var(--mid);max-width:540px;line-height:1.85;">
+      Every program is a complete 30-day system — full training, nutrition, weekly check-in, 1x video call, habit tracker, and coach adjustments. Same-day PDF delivery after payment confirmed.
+    </p>
+    <div class="programs-grid">
+
+      <!-- MF-001 FAT LOSS -->
+      <div class="prog-card">
+        <div class="prog-code">MF—001</div>
+        <div class="prog-name">30-Day Fat Loss System</div>
+        <div class="prog-tagline">Burn fat. Reshape your body. Build the system behind the result.</div>
+        <div class="prog-rows">
+          <div class="prog-row"><span class="prog-row-k">Level</span><span class="prog-row-v">All Levels</span></div>
+          <div class="prog-row"><span class="prog-row-k">Days / Week</span><span class="prog-row-v">5 Days</span></div>
+          <div class="prog-row"><span class="prog-row-k">Equipment</span><span class="prog-row-v">Full Gym</span></div>
+          <div class="prog-row"><span class="prog-row-k">Duration</span><span class="prog-row-v">30 Days</span></div>
+        </div>
+        <div class="prog-inc">
+          <div class="prog-inc-lbl">What's Inside</div>
+          <ul class="prog-inc-list">
+            <li>Upper · Lower · HIIT · Pump · Legs — all 5 sessions</li>
+            <li>Cardio finisher options every training day</li>
+            <li>Fat loss nutrition (1,600–1,900 kcal) + meal plan</li>
+            <li>1x weekly video call + habit tracker + adjustments</li>
+          </ul>
+        </div>
+        <div class="prog-footer">
+          <div>
+            <div class="prog-price-eft">R549</div>
+            <div class="prog-price-lbl">EFT Price</div>
+            <div class="prog-price-btc">₿ R439 with Bitcoin</div>
+          </div>
+          <a href="#order" class="prog-btn" onclick="selectProgram('MF-001 Fat Loss System', 549)">Order</a>
+        </div>
+      </div>
+
+      <!-- MF-002 MUSCLE BUILDING — FEATURED -->
+      <div class="prog-card featured">
+        <div class="feat-badge">Most Popular</div>
+        <div class="prog-code">MF—002</div>
+        <div class="prog-name">30-Day Muscle Building System</div>
+        <div class="prog-tagline">Add real muscle. Build real strength. No filler. No false promises.</div>
+        <div class="prog-rows">
+          <div class="prog-row"><span class="prog-row-k">Level</span><span class="prog-row-v">Intermediate</span></div>
+          <div class="prog-row"><span class="prog-row-k">Days / Week</span><span class="prog-row-v">6 Days — PPL Split</span></div>
+          <div class="prog-row"><span class="prog-row-k">Equipment</span><span class="prog-row-v">Full Gym</span></div>
+          <div class="prog-row"><span class="prog-row-k">Duration</span><span class="prog-row-v">30 Days</span></div>
+        </div>
+        <div class="prog-inc">
+          <div class="prog-inc-lbl">What's Inside</div>
+          <ul class="prog-inc-list">
+            <li>Push · Pull · Legs · Glutes · Upper · Arms — all 6 sessions</li>
+            <li>Progressive overload built into every week</li>
+            <li>Muscle building nutrition (2,400–2,800 kcal) + meal plan</li>
+            <li>1x weekly video call + logbook system + adjustments</li>
+          </ul>
+        </div>
+        <div class="prog-footer">
+          <div>
+            <div class="prog-price-eft">R549</div>
+            <div class="prog-price-lbl">EFT Price</div>
+            <div class="prog-price-btc">₿ R439 with Bitcoin</div>
+          </div>
+          <a href="#order" class="prog-btn" onclick="selectProgram('MF-002 Muscle Building System', 549)">Order</a>
+        </div>
+      </div>
+
+      <!-- MF-003 HOME WORKOUT -->
+      <div class="prog-card">
+        <div class="prog-code">MF—003</div>
+        <div class="prog-name">30-Day Home Workout System</div>
+        <div class="prog-tagline">No gym. No excuses. Just structure and the right system.</div>
+        <div class="prog-rows">
+          <div class="prog-row"><span class="prog-row-k">Level</span><span class="prog-row-v">All Levels</span></div>
+          <div class="prog-row"><span class="prog-row-k">Days / Week</span><span class="prog-row-v">5 Days</span></div>
+          <div class="prog-row"><span class="prog-row-k">Equipment</span><span class="prog-row-v">Bands + Bodyweight</span></div>
+          <div class="prog-row"><span class="prog-row-k">Duration</span><span class="prog-row-v">30 Days</span></div>
+        </div>
+        <div class="prog-inc">
+          <div class="prog-inc-lbl">What's Inside</div>
+          <ul class="prog-inc-list">
+            <li>Upper · Lower · HIIT · Shoulders+Arms · Lower+Core</li>
+            <li>4-week band progression model</li>
+            <li>Dual-mode nutrition (fat loss or toning) + meal plan</li>
+            <li>1x weekly video call + habit tracker + adjustments</li>
+          </ul>
+        </div>
+        <div class="prog-footer">
+          <div>
+            <div class="prog-price-eft">R499</div>
+            <div class="prog-price-lbl">EFT Price</div>
+            <div class="prog-price-btc">₿ R399 with Bitcoin</div>
+          </div>
+          <a href="#order" class="prog-btn" onclick="selectProgram('MF-003 Home Workout System', 499)">Order</a>
+        </div>
+      </div>
+
+      <!-- MF-004 ADVANCED HYPERTROPHY -->
+      <div class="prog-card">
+        <div class="prog-code">MF—004</div>
+        <div class="prog-name">30-Day Advanced Hypertrophy</div>
+        <div class="prog-tagline">Maximum volume. Maximum tension. Maximum muscle.</div>
+        <div class="prog-rows">
+          <div class="prog-row"><span class="prog-row-k">Level</span><span class="prog-row-v">Advanced (2+ years)</span></div>
+          <div class="prog-row"><span class="prog-row-k">Days / Week</span><span class="prog-row-v">6 Days — PPL × 2</span></div>
+          <div class="prog-row"><span class="prog-row-k">Equipment</span><span class="prog-row-v">Full Gym</span></div>
+          <div class="prog-row"><span class="prog-row-k">Duration</span><span class="prog-row-v">30 Days</span></div>
+        </div>
+        <div class="prog-inc">
+          <div class="prog-inc-lbl">What's Inside</div>
+          <ul class="prog-inc-list">
+            <li>Push A/B · Pull A/B · Legs A/B — 20–25 sets per muscle</li>
+            <li>4-week block periodisation (accumulate → intensify → deload)</li>
+            <li>Lean bulk nutrition (2g protein/kg) + creatine protocol</li>
+            <li>1x weekly video call + logbook + adjustments</li>
+          </ul>
+        </div>
+        <div class="prog-footer">
+          <div>
+            <div class="prog-price-eft">R699</div>
+            <div class="prog-price-lbl">EFT Price</div>
+            <div class="prog-price-btc">₿ R559 with Bitcoin</div>
+          </div>
+          <a href="#order" class="prog-btn" onclick="selectProgram('MF-004 Advanced Hypertrophy', 699)">Order</a>
+        </div>
+      </div>
+
+      <!-- MF-005 ATHLETE CONDITIONING -->
+      <div class="prog-card">
+        <div class="prog-code">MF—005</div>
+        <div class="prog-name">30-Day Athlete Conditioning</div>
+        <div class="prog-tagline">Speed. Power. Endurance. Train to perform — not just to look.</div>
+        <div class="prog-rows">
+          <div class="prog-row"><span class="prog-row-k">Level</span><span class="prog-row-v">Athletic / Advanced</span></div>
+          <div class="prog-row"><span class="prog-row-k">Days / Week</span><span class="prog-row-v">6 Days</span></div>
+          <div class="prog-row"><span class="prog-row-k">Equipment</span><span class="prog-row-v">Gym + Track</span></div>
+          <div class="prog-row"><span class="prog-row-k">Duration</span><span class="prog-row-v">30 Days</span></div>
+        </div>
+        <div class="prog-inc">
+          <div class="prog-inc-lbl">What's Inside</div>
+          <ul class="prog-inc-list">
+            <li>Power · Sprint · Strength+Plyo · Aerobic · HIIT+Upper</li>
+            <li>All 3 energy systems trained — phosphocreatine, glycolytic, aerobic</li>
+            <li>Performance nutrition (5–7g carbs/kg) + electrolyte protocol</li>
+            <li>1x weekly video call + benchmark tracker + retest week 4</li>
+          </ul>
+        </div>
+        <div class="prog-footer">
+          <div>
+            <div class="prog-price-eft">R699</div>
+            <div class="prog-price-lbl">EFT Price</div>
+            <div class="prog-price-btc">₿ R559 with Bitcoin</div>
+          </div>
+          <a href="#order" class="prog-btn" onclick="selectProgram('MF-005 Athlete Conditioning', 699)">Order</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BUNDLE -->
+    <div class="bundle" id="bundle">
+      <div class="bundle-glow"></div>
+      <div class="bundle-inner">
+        <div>
+          <div class="bundle-eye">— &nbsp; Best Value</div>
+          <div class="bundle-title">Complete MAG Fitness<br><strong>Program Library</strong></div>
+          <div class="bundle-tags">
+            <span class="btag">MF-001 Fat Loss</span>
+            <span class="btag">MF-002 Muscle</span>
+            <span class="btag">MF-003 Home</span>
+            <span class="btag">MF-004 Advanced</span>
+            <span class="btag">MF-005 Athlete</span>
+          </div>
+          <div class="bundle-saving">
+            <span class="save-pill">SAVE R697</span> All 5 programs. One payment. Same-day delivery.
+          </div>
+          <div class="bundle-saving" style="margin-top:6px;">
+            <span class="save-pill" style="background:var(--btc);color:#000;">₿ BTC</span>
+            Pay in Bitcoin — save an extra 20%. Only <strong style="color:var(--btc);margin-left:4px;">R1,560</strong>
+          </div>
+        </div>
+        <div class="bundle-price-block">
+          <div class="b-was">R2,995 separately</div>
+          <span class="b-price">R1,949</span>
+          <span class="b-lbl">Full Bundle — EFT</span>
+          <div class="b-btc">₿ R1,560 with Bitcoin</div>
+          <a href="#order" class="btn-primary" style="display:block;text-align:center;" onclick="selectProgram('FULL BUNDLE — All 5 Programs', 1949)">Order Bundle</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- HOW IT WORKS -->
+<section id="how" class="full-bg">
+  <div class="wrap">
+    <div class="sec-eye">The Process</div>
+    <h2 class="sec-title">Simple. <em>Fast.</em> Effective.</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <span class="step-n">01</span>
+        <div class="step-title">Choose Your Program</div>
+        <div class="step-desc">Pick the system that matches your goal. Click "Order" on any program and the order form below will auto-fill.</div>
+        <div class="step-note">5 programs available</div>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <div class="step-title">Fill The Form</div>
+        <div class="step-desc">Enter your details and choose EFT or Bitcoin. The total updates automatically — Bitcoin saves you 20%.</div>
+        <div class="step-note">EFT or Bitcoin</div>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <div class="step-title">Make Payment</div>
+        <div class="step-desc">Use the payment details shown. Click submit — your order goes directly to Matthew on Instagram.</div>
+        <div class="step-note">Direct Instagram DM</div>
+      </div>
+      <div class="step">
+        <span class="step-n">04</span>
+        <div class="step-title">Receive Your PDF</div>
+        <div class="step-desc">Once payment is confirmed, your branded MAG Fitness PDF is sent the same day. Open it and start Day 1.</div>
+        <div class="step-note">Same-day delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ORDER FORM -->
+<section id="order">
+  <div class="wrap">
+    <div class="order-section">
+      <div class="sec-eye">Order Form</div>
+      <h2 class="sec-title">Complete your <em>order</em></h2>
+      <p style="font-size:14px;color:var(--mid);max-width:560px;line-height:1.85;">
+        Fill in your details, choose your payment method, and make the payment using the details that appear. Then click submit — your order goes straight to Matthew on Instagram.
+      </p>
+      <form class="order-form" id="orderForm" onsubmit="return submitOrder(event)">
+        <div class="form-group">
+          <label class="form-label">Selected Program</label>
+          <select class="form-select" id="program" required onchange="updateTotal()">
+            <option value="">— Select a program —</option>
+            <option value="MF-001 Fat Loss System|549">MF-001 Fat Loss System — R549</option>
+            <option value="MF-002 Muscle Building System|549">MF-002 Muscle Building System — R549</option>
+            <option value="MF-003 Home Workout System|499">MF-003 Home Workout System — R499</option>
+            <option value="MF-004 Advanced Hypertrophy|699">MF-004 Advanced Hypertrophy — R699</option>
+            <option value="MF-005 Athlete Conditioning|699">MF-005 Athlete Conditioning — R699</option>
+            <option value="FULL BUNDLE — All 5 Programs|1949">FULL BUNDLE — All 5 Programs — R1,949</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Full Name</label>
+            <input type="text" class="form-input" id="name" placeholder="Matthew Gordon" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Instagram Handle (so I can DM your PDF)</label>
+          <input type="text" class="form-input" id="instagram" placeholder="@yourhandle" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Payment Method</label>
+          <div class="payment-toggle">
+            <div>
+              <input type="radio" name="payment" id="payEft" value="eft" checked onchange="updateTotal()">
+              <label for="payEft">🏦 &nbsp; EFT — Standard Price<span class="toggle-sub">ABSA Bank Transfer</span></label>
+            </div>
+            <div class="btc-opt">
+              <input type="radio" name="payment" id="payBtc" value="btc" onchange="updateTotal()">
+              <label for="payBtc">₿ &nbsp; Bitcoin — Save 20%<span class="toggle-sub">On-chain or Lightning</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="order-summary" id="summary" style="display:none;">
+          <div class="summary-row">
+            <span class="summary-key">Program</span>
+            <span class="summary-val" id="sumProgram">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-key">Standard Price</span>
+            <span class="summary-val" id="sumPrice">R0</span>
+          </div>
+          <div class="summary-row discount-row" id="discountRow" style="display:none;">
+            <span class="summary-key">Bitcoin Discount (20%)</span>
+            <span class="summary-val" id="sumDiscount">— R0</span>
+          </div>
+          <div class="summary-row total">
+            <span class="summary-key">Total Due</span>
+            <span class="summary-val" id="sumTotal">R0</span>
+          </div>
+        </div>
+
+        <!-- EFT PANEL -->
+        <div class="pay-panel active" id="eftPanel">
+          <div class="pay-panel-title">🏦 &nbsp; Pay via EFT to this account</div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Bank</span>
+            <span class="pay-detail-val">ABSA Bank</span>
+          </div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Account Type</span>
+            <span class="pay-detail-val">Current Account</span>
+          </div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Account Holder</span>
+            <span class="pay-detail-val">Matthew Aiden Gordon</span>
+          </div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Account Number</span>
+            <span style="display:flex;align-items:center;">
+              <span class="pay-detail-val acct">9288447411</span>
+              <button type="button" class="copy-btn" onclick="copyText('9288447411', this)">⧉ Copy</button>
+            </span>
+          </div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Reference</span>
+            <span class="pay-detail-val" id="eftRef">Your Name + Program Code</span>
+          </div>
+        </div>
+
+        <!-- BTC PANEL -->
+        <div class="pay-panel btc" id="btcPanel">
+          <div class="pay-panel-title">₿ &nbsp; Pay via Bitcoin / Lightning</div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Bitcoin Address</span>
+            <span style="display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:8px;">
+              <span class="pay-detail-val" style="color:var(--btc);">bc1qgaz7w9g3luu770tyy25675k27rersc4szlyhag</span>
+              <button type="button" class="copy-btn btc" onclick="copyText('bc1qgaz7w9g3luu770tyy25675k27rersc4szlyhag', this)">⧉ Copy</button>
+            </span>
+          </div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Network</span>
+            <span class="pay-detail-val">On-chain or Lightning (Native SegWit)</span>
+          </div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">Amount</span>
+            <span class="pay-detail-val" id="btcAmount">Calculate ZAR amount in BTC at time of payment</span>
+          </div>
+          <div class="pay-detail">
+            <span class="pay-detail-key">After Sending</span>
+            <span class="pay-detail-val" style="text-align:left;color:var(--mid);font-family:'DM Sans',sans-serif;">Paste your transaction ID below before submitting</span>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:24px;">
+          <label class="form-label" id="proofLabel">Proof of Payment / Transaction ID (optional)</label>
+          <textarea class="form-textarea" id="proof" placeholder="Paste your TXID here, or leave blank and DM your proof screenshot to @magfitness after submitting"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit Order →</button>
+        <div class="form-note">Submitting will open Instagram with a pre-filled DM to <strong>@magfitness</strong>. Send the message — Matthew will confirm and deliver your PDF the same day.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">MAG <span>FITNESS</span></div>
+  <div class="foot-tag">"Discipline isn't required. Compliance is."</div>
+  <div class="foot-rule"></div>
+  <div class="foot-social">
+    <a href="https://instagram.com/magfitness" target="_blank">@magfitness</a>
+  </div>
+  <div class="foot-copy">
+    © Matthew Aiden Gordon — MAG Fitness &nbsp;·&nbsp; Cape Town, South Africa<br>
+    All programs are personal-use only. Redistribution or resale is strictly prohibited.<br>
+    All prices in South African Rand (ZAR). Bitcoin prices calculated at time of payment.
+  </div>
+</footer>
+
+<script>
+const BTC_ADDR = 'bc1qgaz7w9g3luu770tyy25675k27rersc4szlyhag';
+const IG_HANDLE = 'magfitness';
+
+function selectProgram(name, price) {
+  const select = document.getElementById('program');
+  for (let i = 0; i < select.options.length; i++) {
+    if (select.options[i].value.startsWith(name)) {
+      select.selectedIndex = i;
+      break;
+    }
+  }
+  updateTotal();
+  setTimeout(() => {
+    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+}
+
+function updateTotal() {
+  const select = document.getElementById('program');
+  const summary = document.getElementById('summary');
+  const eftPanel = document.getElementById('eftPanel');
+  const btcPanel = document.getElementById('btcPanel');
+  const discountRow = document.getElementById('discountRow');
+  const proofLabel = document.getElementById('proofLabel');
+  if (!select.value) { summary.style.display = 'none'; return; }
+  const [name, priceStr] = select.value.split('|');
+  const price = parseInt(priceStr);
+  const isBtc = document.getElementById('payBtc').checked;
+  const total = isBtc ? Math.round(price * 0.8) : price;
+  summary.style.display = 'block';
+  document.getElementById('sumProgram').textContent = name;
+  document.getElementById('sumPrice').textContent = 'R' + price.toLocaleString();
+  if (isBtc) {
+    discountRow.style.display = 'flex';
+    document.getElementById('sumDiscount').textContent = '— R' + (price - total).toLocaleString();
+    document.getElementById('sumTotal').textContent = 'R' + total.toLocaleString();
+    document.getElementById('sumTotal').className = 'summary-val btc';
+    eftPanel.classList.remove('active');
+    btcPanel.classList.add('active');
+    proofLabel.textContent = 'Bitcoin Transaction ID (paste TXID here after sending)';
+  } else {
+    discountRow.style.display = 'none';
+    document.getElementById('sumTotal').textContent = 'R' + total.toLocaleString();
+    document.getElementById('sumTotal').className = 'summary-val';
+    btcPanel.classList.remove('active');
+    eftPanel.classList.add('active');
+    proofLabel.textContent = 'Proof of Payment Reference (optional — DM screenshot after)';
+  }
+  const nameEl = document.getElementById('name');
+  const code = name.split(' ')[0];
+  if (nameEl.value) {
+    document.getElementById('eftRef').textContent = nameEl.value.split(' ')[0] + ' ' + code;
+  } else {
+    document.getElementById('eftRef').textContent = 'Your Name + ' + code;
+  }
+}
+
+document.getElementById('name').addEventListener('input', updateTotal);
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied';
+    btn.style.background = btn.classList.contains('btc') ? 'var(--btc)' : 'var(--ox)';
+    btn.style.color = btn.classList.contains('btc') ? '#000' : 'var(--bone)';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; }, 1800);
+  });
+}
+
+function submitOrder(e) {
+  e.preventDefault();
+  const select = document.getElementById('program');
+  if (!select.value) { alert('Please select a program first.'); return false; }
+  const [program, priceStr] = select.value.split('|');
+  const price = parseInt(priceStr);
+  const isBtc = document.getElementById('payBtc').checked;
+  const total = isBtc ? Math.round(price * 0.8) : price;
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const ig = document.getElementById('instagram').value;
+  const proof = document.getElementById('proof').value;
+  const method = isBtc ? '₿ Bitcoin (20% off)' : '🏦 EFT to ABSA';
+  const message =
+    `Hi Matthew! I'd like to order:\n\n` +
+    `Program: ${program}\n` +
+    `Total: R${total.toLocaleString()}\n` +
+    `Payment: ${method}\n\n` +
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `Instagram: ${ig}\n\n` +
+    (proof ? `Payment Reference / TXID:\n${proof}\n\n` : `I'll send proof of payment after this DM.\n\n`) +
+    `Please confirm and send my MAG Fitness program.`;
+  const igUrl = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent(message)}`;
+  window.open(igUrl, '_blank');
+  setTimeout(() => {
+    alert('Your order has been prepared!\n\nIf Instagram did not open, please DM @' + IG_HANDLE + ' directly with your order details.');
+  }, 800);
+  return false;
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.prog-card, .step, .cred, .about-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity .55s ease, transform .55s ease, border-color .25s';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
