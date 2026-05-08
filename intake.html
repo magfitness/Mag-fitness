@@ -16,11 +16,11 @@
     --field-bg: rgba(245,241,235,0.04);
   }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-background: var(–black);
-color: var(–bone);
+background: var(--black);
+color: var(--bone);
 font-family: ‘Montserrat’, sans-serif;
 min-height: 100vh;
 }
@@ -30,7 +30,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 padding: 20px 32px;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -42,14 +42,14 @@ gap: 12px;
 .logo-mark {
 width: 32px;
 height: 32px;
-background: var(–oxblood);
+background: var(--oxblood);
 display: flex;
 align-items: center;
 justify-content: center;
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 16px;
 font-weight: 600;
-color: var(–bone);
+color: var(--bone);
 }
 
 .logo-text {
@@ -57,24 +57,24 @@ font-size: 10px;
 letter-spacing: 0.28em;
 font-weight: 500;
 text-transform: uppercase;
-color: var(–bone);
+color: var(--bone);
 }
 
 .header-tag {
 font-size: 9px;
 letter-spacing: 0.2em;
 text-transform: uppercase;
-color: var(–muted);
+color: var(--muted);
 }
 
 .progress-bar {
 height: 2px;
-background: var(–border);
+background: var(--border);
 }
 
 .progress-fill {
 height: 100%;
-background: var(–oxblood);
+background: var(--oxblood);
 width: 0%;
 transition: width 0.5s ease;
 }
@@ -97,7 +97,7 @@ to { opacity: 1; transform: translateY(0); }
 font-size: 9px;
 letter-spacing: 0.28em;
 text-transform: uppercase;
-color: var(–oxblood);
+color: var(--oxblood);
 margin-bottom: 8px;
 }
 
@@ -105,10 +105,10 @@ margin-bottom: 8px;
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 32px;
 font-weight: 300;
-color: var(–bone);
+color: var(--bone);
 margin-bottom: 36px;
 padding-bottom: 20px;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 letter-spacing: 0.02em;
 }
 
@@ -121,7 +121,7 @@ display: block;
 font-size: 9px;
 letter-spacing: 0.2em;
 text-transform: uppercase;
-color: var(–muted);
+color: var(--muted);
 margin-bottom: 10px;
 font-weight: 500;
 }
@@ -132,9 +132,9 @@ input[type=“email”],
 textarea,
 select {
 width: 100%;
-background: var(–field-bg);
-border: 1px solid var(–border);
-color: var(–bone);
+background: var(--field-bg);
+border: 1px solid var(--border);
+color: var(--bone);
 padding: 14px 16px;
 font-size: 14px;
 font-family: ‘Montserrat’, sans-serif;
@@ -157,7 +157,7 @@ cursor: pointer;
 
 select option {
 background: #141414;
-color: var(–bone);
+color: var(--bone);
 }
 
 textarea {
@@ -181,13 +181,13 @@ display: flex;
 gap: 12px;
 margin-top: 44px;
 padding-top: 24px;
-border-top: 1px solid var(–border);
+border-top: 1px solid var(--border);
 }
 
 .btn-primary {
 padding: 14px 32px;
-background: var(–oxblood);
-color: var(–bone);
+background: var(--oxblood);
+color: var(--bone);
 border: none;
 cursor: pointer;
 font-size: 9px;
@@ -203,8 +203,8 @@ transition: background 0.2s ease;
 .btn-secondary {
 padding: 14px 28px;
 background: transparent;
-color: var(–muted);
-border: 1px solid var(–border);
+color: var(--muted);
+border: 1px solid var(--border);
 cursor: pointer;
 font-size: 9px;
 letter-spacing: 0.22em;
@@ -214,7 +214,7 @@ font-weight: 500;
 transition: color 0.2s ease;
 }
 
-.btn-secondary:hover { color: var(–bone); }
+.btn-secondary:hover { color: var(--bone); }
 
 .success {
 display: none;
@@ -227,7 +227,7 @@ padding: 80px 24px;
 .success-mark {
 width: 56px;
 height: 56px;
-background: var(–oxblood);
+background: var(--oxblood);
 display: flex;
 align-items: center;
 justify-content: center;
@@ -244,7 +244,7 @@ margin-bottom: 14px;
 
 .success p {
 font-size: 12px;
-color: var(–muted);
+color: var(--muted);
 line-height: 1.8;
 letter-spacing: 0.05em;
 }
@@ -258,11 +258,11 @@ margin-bottom: 32px;
 .dot {
 width: 4px;
 height: 4px;
-background: var(–border);
+background: var(--border);
 transition: background 0.3s ease;
 }
 
-.dot.active { background: var(–oxblood); }
+.dot.active { background: var(--oxblood); }
 .dot.done { background: rgba(107,31,31,0.4); }
 
 @media (max-width: 500px) {
@@ -398,9 +398,9 @@ header { padding: 16px 20px; }
     <select name="Timeline">
       <option value="">— Select —</option>
       <option>ASAP / No preference</option>
-      <option>1–3 months</option>
-      <option>3–6 months</option>
-      <option>6–12 months</option>
+      <option>1--3 months</option>
+      <option>3--6 months</option>
+      <option>6--12 months</option>
       <option>Long-term lifestyle change</option>
     </select>
   </div>
@@ -429,7 +429,7 @@ header { padding: 16px 20px; }
       <option value="">— Select —</option>
       <option>Complete Beginner (never trained)</option>
       <option>Beginner (under 6 months consistent)</option>
-      <option>Intermediate (6 months – 2 years)</option>
+      <option>Intermediate (6 months -- 2 years)</option>
       <option>Advanced (2+ years consistent)</option>
     </select>
   </div>
@@ -449,10 +449,10 @@ header { padding: 16px 20px; }
       <label>Session Duration</label>
       <select name="Session Duration">
         <option value="">— Select —</option>
-        <option>30–45 minutes</option>
-        <option>45–60 minutes</option>
-        <option>60–75 minutes</option>
-        <option>75–90 minutes</option>
+        <option>30--45 minutes</option>
+        <option>45--60 minutes</option>
+        <option>60--75 minutes</option>
+        <option>75--90 minutes</option>
       </select>
     </div>
   </div>
@@ -532,9 +532,9 @@ header { padding: 16px 20px; }
       <select name="Water Intake">
         <option value="">— Select —</option>
         <option>Less than 1L</option>
-        <option>1–1.5L</option>
-        <option>1.5–2L</option>
-        <option>2–2.5L</option>
+        <option>1--1.5L</option>
+        <option>1.5--2L</option>
+        <option>2--2.5L</option>
         <option>2.5L+</option>
       </select>
     </div>
@@ -569,9 +569,9 @@ header { padding: 16px 20px; }
       <select name="Sleep Hours">
         <option value="">— Select —</option>
         <option>Less than 5 hours</option>
-        <option>5–6 hours</option>
-        <option>6–7 hours</option>
-        <option>7–8 hours</option>
+        <option>5--6 hours</option>
+        <option>6--7 hours</option>
+        <option>7--8 hours</option>
         <option>8+ hours</option>
       </select>
     </div>
@@ -613,8 +613,8 @@ header { padding: 16px 20px; }
     <select name="Alcohol Use">
       <option value="">— Select —</option>
       <option>None</option>
-      <option>Occasional (1–2 drinks/week)</option>
-      <option>Moderate (3–7 drinks/week)</option>
+      <option>Occasional (1--2 drinks/week)</option>
+      <option>Moderate (3--7 drinks/week)</option>
       <option>Regular (daily or near-daily)</option>
     </select>
   </div>
