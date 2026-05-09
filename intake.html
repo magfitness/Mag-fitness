@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAG Fitness — Client Intake</title>
+<meta name="description" content="Begin your application. The intake form captures the information needed to place you in the right program and prepare your first call.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0E0E0E;
+    --black-soft: #161616;
+    --bone: #F5F1EB;
+    --ox: #6B1F1F;
+    --ox2: #8B2F2F;
+    --line: rgba(245, 241, 235, 0.08);
+    --line-strong: rgba(245, 241, 235, 0.18);
+    --muted: rgba(245, 241, 235, 0.55);
+    --muted-strong: rgba(245, 241, 235, 0.72);
+    --display: 'Bebas Neue', sans-serif;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --content-max: 800px;
+    --gutter: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    font-size: 15px;
+  }
+
+  ::selection { background: var(--ox); color: var(--bone); }
+
+  .label {
+    font-family: var(--sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ox2);
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14, 14, 14, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.25rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--display);
+    font-size: 1.125rem;
+    letter-spacing: 0.18em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--ox2); margin: 0 0.15em; }
+
+  .nav a.back {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-strong);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav a.back:hover { color: var(--bone); }
+
+  section { padding: clamp(3rem, 7vw, 5rem) var(--gutter); }
+  .container { max-width: var(--content-max); margin: 0 auto; }
+
+  .form-header {
+    padding-top: clamp(4rem, 9vw, 6rem);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: clamp(3rem, 6vw, 4rem);
+  }
+
+  .form-header .meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .form-header .meta-top .label { font-size: 0.5625rem; }
+
+  .form-header h1 {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-header h1 .serif-accent {
+    font-family: var(--serif);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--ox2);
+    display: block;
+    font-size: 0.85em;
+    margin-top: 0.1em;
+  }
+
+  .form-header p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted-strong);
+    max-width: 56ch;
+  }
+
+  .form-section { padding-top: clamp(3rem, 6vw, 4rem); }
+
+  .form-block {
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .form-block:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+  .form-block-header { margin-bottom: 2rem; }
+
+  .form-block-header .eyebrow { display: block; margin-bottom: 0.75rem; }
+
+  .form-block-header h2 {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+
+  .field { margin-bottom: 1.5rem; }
+
+  .field-label {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-strong);
+    margin-bottom: 0.6rem;
+  }
+
+  .field-required::after { content: ' *'; color: var(--ox2); }
+
+  .field-help {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    background: var(--black-soft);
+    border: 1px solid var(--line-strong);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 0.9375rem;
+    padding: 0.85rem 1rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--ox2);
+    background: rgba(107, 31, 31, 0.04);
+  }
+
+  textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%238B2F2F' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .radio-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--line-strong);
+    background: var(--black-soft);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .radio-option:hover { border-color: var(--muted); }
+  .radio-option input { margin-top: 0.2rem; accent-color: var(--ox); flex-shrink: 0; }
+  .radio-option-text { flex: 1; }
+  .radio-option-title {
+    font-size: 0.9375rem;
+    color: var(--bone);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  .radio-option-meta {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.5;
+    display: block;
+  }
+  .radio-option:has(input:checked) {
+    border-color: var(--ox);
+    background: rgba(107, 31, 31, 0.06);
+  }
+
+  .submit-block { text-align: center; padding-top: 2.5rem; }
+
+  .submit-note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--muted-strong);
+    margin-bottom: 1.75rem;
+    line-height: 1.5;
+    max-width: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 1.1rem 2.75rem;
+    font-family: var(--display);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--ox);
+    background: var(--ox);
+    color: var(--bone);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .btn-submit:hover { background: var(--ox2); border-color: var(--ox2); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .confirmation { display: none; }
+  .confirmation.active { display: block; }
+  .form-wrapper.hidden { display: none; }
+
+  .confirmation-card {
+    border: 1px solid var(--ox);
+    background: linear-gradient(180deg, rgba(107, 31, 31, 0.08) 0%, var(--black-soft) 60%);
+    padding: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 2rem;
+  }
+
+  .confirmation-card .eyebrow {
+    color: var(--ox2);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .confirmation-card h2 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .confirmation-card h2 .serif-accent {
+    font-family: var(--serif);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--ox2);
+    display: block;
+    font-size: 0.85em;
+    margin-top: 0.15em;
+  }
+
+  .confirmation-card p {
+    color: var(--muted-strong);
+    line-height: 1.7;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .confirmation-card p:last-child { margin-bottom: 0; }
+
+  .next-steps {
+    border: 1px solid var(--line);
+    padding: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 2rem;
+  }
+
+  .next-steps h3 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .next-steps ol { list-style: none; counter-reset: steps; }
+
+  .next-steps li {
+    counter-increment: steps;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .next-steps li:last-child { border-bottom: none; }
+
+  .next-steps li::before {
+    content: counter(steps, decimal-leading-zero);
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--ox2);
+    line-height: 1;
+  }
+
+  .step-title {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bone);
+    margin-bottom: 0.35rem;
+  }
+
+  .step-desc {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--muted-strong);
+    line-height: 1.6;
+  }
+
+  .submission-summary {
+    border: 1px solid var(--line-strong);
+    background: var(--black-soft);
+    padding: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .submission-summary h3 {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .summary-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.875rem;
+  }
+  .summary-row:last-child { border-bottom: none; }
+
+  @media (max-width: 600px) {
+    .summary-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  }
+
+  .summary-row .label-key {
+    font-family: var(--sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .summary-row .value {
+    color: var(--bone);
+    word-wrap: break-word;
+    line-height: 1.5;
+  }
+
+  .screenshot-prompt {
+    text-align: center;
+    padding: 2rem;
+    border: 1px dashed var(--ox);
+    background: rgba(107, 31, 31, 0.04);
+    margin-bottom: 2rem;
+  }
+
+  .screenshot-prompt .label {
+    color: var(--ox2);
+    margin-bottom: 0.75rem;
+    display: block;
+    font-size: 0.625rem;
+  }
+
+  .screenshot-prompt p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--bone);
+    line-height: 1.55;
+    max-width: 52ch;
+    margin: 0 auto;
+  }
+
+  .confirmation-actions { text-align: center; padding-top: 1rem; }
+
+  .btn-bone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2rem;
+    font-family: var(--display);
+    font-size: 0.875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--line-strong);
+    color: var(--bone);
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+  .btn-bone:hover { border-color: var(--bone); }
+
+  footer {
+    padding: 3rem var(--gutter);
+    background: var(--black);
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+
+  footer p {
+    font-family: var(--display);
+    font-size: 0.875rem;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+  }
+  footer p span { color: var(--ox2); }
+
+  .hp-field { position: absolute; left: -5000px; visibility: hidden; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="Index.html" class="logo">MAG<span>·</span>FITNESS</a>
+    <a href="Sales.html" class="back">← Back to Programs</a>
+  </div>
+</nav>
+
+<div class="form-wrapper" id="formWrapper">
+
+<section class="form-header">
+  <div class="container">
+    <div class="meta-top">
+      <span class="label">MAG · D04 · Client Intake</span>
+      <span class="label">Confidential</span>
+    </div>
+    <h1>
+      Begin your application.
+      <span class="serif-accent">The work starts here.</span>
+    </h1>
+    <p>This form captures the information needed to place you in the right program and prepare your first call. It takes around five minutes. Every submission is reviewed personally before any payment is requested.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="container">
+
+    <form name="mag-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="intakeForm">
+      <input type="hidden" name="form-name" value="mag-intake">
+      <p class="hp-field">
+        <label>Don't fill this out: <input name="bot-field"></label>
+      </p>
+
+      <div class="form-block">
+        <div class="form-block-header">
+          <span class="eyebrow">Section 01</span>
+          <h2>About You</h2>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="Full Name" required>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="email">Email Address</label>
+          <input type="email" id="email" name="Email" required>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="phone">Phone / WhatsApp Number</label>
+          <input type="tel" id="phone" name="Phone" required>
+          <span class="field-help">Include country code for international clients (e.g. +27 for South Africa).</span>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="instagram">Instagram Handle (Optional)</label>
+          <input type="text" id="instagram" name="Instagram" placeholder="@yourhandle">
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="age">Age</label>
+          <input type="number" id="age" name="Age" min="16" max="99" required>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="location">City / Country</label>
+          <input type="text" id="location" name="Location" required>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <div class="form-block-header">
+          <span class="eyebrow">Section 02</span>
+          <h2>Your Selection</h2>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required">Which tier are you applying for?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Tier" value="MAG Coaching (R1,499)" required>
+              <span class="radio-option-text">
+                <span class="radio-option-title">MAG Coaching — R1,499 / 30-Day Cycle</span>
+                <span class="radio-option-meta">Direct coaching with weekly 30-minute calls and full program access.</span>
+              </span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Tier" value="MAG Programs (Self-Guided)" required>
+              <span class="radio-option-text">
+                <span class="radio-option-title">MAG Programs — R549 to R699</span>
+                <span class="radio-option-meta">Self-guided program PDF only. No coaching calls.</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="program">Which program are you interested in?</label>
+          <select id="program" name="Program" required>
+            <option value="">Select a program</option>
+            <option value="MF-001 — Fat Loss">MF–001 · 30-Day Fat Loss System</option>
+            <option value="MF-002 — Muscle Building">MF–002 · 30-Day Muscle Building</option>
+            <option value="MF-003 — Home Workout">MF–003 · 30-Day Home Workout System</option>
+            <option value="MF-004 — Advanced Hypertrophy">MF–004 · 30-Day Advanced Hypertrophy</option>
+            <option value="MF-005 — Athlete Conditioning">MF–005 · 30-Day Athlete Conditioning</option>
+            <option value="Unsure — Recommend One">Unsure — recommend the right one for me</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required">Preferred payment method</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Payment Method" value="EFT" required>
+              <span class="radio-option-text">
+                <span class="radio-option-title">EFT (Bank Transfer)</span>
+                <span class="radio-option-meta">Standard pricing in South African Rand.</span>
+              </span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Payment Method" value="Bitcoin" required>
+              <span class="radio-option-text">
+                <span class="radio-option-title">Bitcoin</span>
+                <span class="radio-option-meta">17% discount applied to all tiers.</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <div class="form-block-header">
+          <span class="eyebrow">Section 03</span>
+          <h2>Training Background</h2>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="experience">How would you describe your training experience?</label>
+          <select id="experience" name="Experience Level" required>
+            <option value="">Select your level</option>
+            <option value="Complete beginner">Complete beginner — never trained consistently</option>
+            <option value="Some experience">Some experience — trained on and off</option>
+            <option value="Intermediate">Intermediate — train regularly, 1–2 years</option>
+            <option value="Advanced">Advanced — 2+ years of consistent training</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="currentTraining">What does your current training look like?</label>
+          <textarea id="currentTraining" name="Current Training" required placeholder="Describe what you're currently doing — gym, home, sport, nothing at all. Be honest."></textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="primaryGoal">What is your primary goal?</label>
+          <textarea id="primaryGoal" name="Primary Goal" required placeholder="Be specific — fat loss, muscle gain, strength, performance, body recomposition, etc."></textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="timeline">Is there a specific timeline or event?</label>
+          <input type="text" id="timeline" name="Timeline" placeholder="Wedding, holiday, competition, or no specific deadline">
+        </div>
+      </div>
+
+      <div class="form-block">
+        <div class="form-block-header">
+          <span class="eyebrow">Section 04</span>
+          <h2>Health & Lifestyle</h2>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="injuries">Any injuries, conditions, or medications I should know about?</label>
+          <textarea id="injuries" name="Health Disclosure" required placeholder="Include current and past injuries, chronic conditions, blood pressure issues, medications, or write 'None' if not applicable."></textarea>
+          <span class="field-help">This information stays confidential and is used to keep your training safe and effective.</span>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="sleep">Average sleep per night</label>
+          <select id="sleep" name="Sleep" required>
+            <option value="">Select</option>
+            <option value="Less than 5 hours">Less than 5 hours</option>
+            <option value="5-6 hours">5–6 hours</option>
+            <option value="6-7 hours">6–7 hours</option>
+            <option value="7-8 hours">7–8 hours</option>
+            <option value="8+ hours">8+ hours</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="stress">Current stress level</label>
+          <select id="stress" name="Stress Level" required>
+            <option value="">Select</option>
+            <option value="Low — manageable">Low — manageable</option>
+            <option value="Moderate — typical">Moderate — typical</option>
+            <option value="High — significant">High — significant</option>
+            <option value="Very high — overwhelming">Very high — overwhelming</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="nutrition">How would you describe your current nutrition?</label>
+          <textarea id="nutrition" name="Current Nutrition" required placeholder="What does an average day of eating look like? Be honest — there is no judgment, only information."></textarea>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <div class="form-block-header">
+          <span class="eyebrow">Section 05</span>
+          <h2>Anything Else</h2>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="notes">Anything you want me to know before we begin?</label>
+          <textarea id="notes" name="Additional Notes" placeholder="Optional. Use this space if there is context that does not fit elsewhere."></textarea>
+        </div>
+
+        <div class="field">
+          <label class="field-label field-required" for="howFound">How did you find MAG Fitness?</label>
+          <select id="howFound" name="How You Found Us" required>
+            <option value="">Select</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Friend or referral">Friend or referral</option>
+            <option value="Google search">Google search</option>
+            <option value="Word of mouth">Word of mouth</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="submit-block">
+        <p class="submit-note">Every application is reviewed personally. You will receive a response within 24 hours with payment details and next steps.</p>
+        <button type="submit" class="btn-submit" id="submitBtn">Submit Application</button>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+
+</div>
+
+<div class="confirmation" id="confirmationView">
+
+  <section class="form-header">
+    <div class="container">
+      <div class="meta-top">
+        <span class="label">MAG · D04 · Application Received</span>
+        <span class="label" id="submissionDate"></span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 2rem;">
+    <div class="container">
+
+      <div class="confirmation-card">
+        <span class="eyebrow">Application Received</span>
+        <h2>Thank you, <span class="serif-accent" id="confirmName">friend</span></h2>
+        <p>Your application has been received. A copy has been logged and Matthew will review it personally within 24 hours.</p>
+        <p>You will receive a response via email and WhatsApp containing the EFT and Bitcoin payment details specific to your selection. Once payment is confirmed, your program and onboarding materials will be sent within 24 hours.</p>
+      </div>
+
+      <div class="screenshot-prompt">
+        <span class="label">Important</span>
+        <p>Please screenshot this page and attach it to your payment confirmation when you transfer. This helps match your payment to your application quickly.</p>
+      </div>
+
+      <div class="submission-summary">
+        <h3>Application Summary</h3>
+        <div id="summaryContent"></div>
+      </div>
+
+      <div class="next-steps">
+        <h3>What Happens Next</h3>
+        <ol>
+          <li>
+            <div>
+              <span class="step-title">Application Review</span>
+              <span class="step-desc">Matthew reviews your application personally within 24 hours.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span class="step-title">Payment Details Sent</span>
+              <span class="step-desc">You receive EFT or Bitcoin payment instructions via email and WhatsApp based on your selection.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span class="step-title">Submit Payment Confirmation</span>
+              <span class="step-desc">Send proof of payment along with this page screenshot to confirm your order.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <span class="step-title">Onboarding</span>
+              <span class="step-desc">Your program PDF and onboarding materials are sent within 24 hours of payment. Coaching clients receive their first call booking link at the same time.</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="confirmation-actions">
+        <a href="Index.html" class="btn-bone">Return to Home</a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>MAG <span>·</span> FITNESS <span>·</span> CAPE TOWN <span>·</span> EST 2025</p>
+</footer>
+
+<script>
+  const form = document.getElementById('intakeForm');
+  const formWrapper = document.getElementById('formWrapper');
+  const confirmationView = document.getElementById('confirmationView');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      if (response.ok) {
+        showConfirmation(formData);
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Application';
+      alert('There was a problem submitting your application. Please try again, or email gordonworkandbusiness@gmail.com directly.');
+    }
+  });
+
+  function showConfirmation(formData) {
+    const name = formData.get('Full Name') || 'friend';
+    const firstName = name.split(' ')[0];
+    document.getElementById('confirmName').textContent = firstName;
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+    document.getElementById('submissionDate').textContent = dateStr;
+
+    const summaryContent = document.getElementById('summaryContent');
+    const fieldsToShow = [
+      ['Full Name', 'Name'],
+      ['Email', 'Email'],
+      ['Phone', 'Phone / WhatsApp'],
+      ['Instagram', 'Instagram'],
+      ['Age', 'Age'],
+      ['Location', 'Location'],
+      ['Tier', 'Selected Tier'],
+      ['Program', 'Selected Program'],
+      ['Payment Method', 'Payment Method'],
+      ['Experience Level', 'Experience'],
+      ['Primary Goal', 'Primary Goal'],
+      ['Timeline', 'Timeline'],
+      ['Health Disclosure', 'Health Disclosure'],
+      ['How You Found Us', 'Source']
+    ];
+
+    fieldsToShow.forEach(([key, label]) => {
+      const value = formData.get(key);
+      if (value && value.trim() !== '') {
+        const row = document.createElement('div');
+        row.className = 'summary-row';
+        row.innerHTML = '<span class="label-key">' + label + '</span><span class="value">' + escapeHtml(value) + '</span>';
+        summaryContent.appendChild(row);
+      }
+    });
+
+    formWrapper.classList.add('hidden');
+    confirmationView.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function escapeHtml(unsafe) {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+</script>
+
+</body>
+</html>
