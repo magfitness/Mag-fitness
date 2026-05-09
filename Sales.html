@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAG Fitness — Coaching & Programs</title>
+<meta name="description" content="A structured coaching practice. Direct coaching with weekly calls, or self-guided programs built on the same framework. Cape Town, delivered worldwide.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0E0E0E;
+    --black-soft: #161616;
+    --bone: #F5F1EB;
+    --bone-soft: #E8E2D6;
+    --ox: #6B1F1F;
+    --ox2: #8B2F2F;
+    --mid: #6B6B6B;
+    --light: #D4CFC7;
+    --line: rgba(245, 241, 235, 0.08);
+    --line-strong: rgba(245, 241, 235, 0.18);
+    --muted: rgba(245, 241, 235, 0.55);
+    --muted-strong: rgba(245, 241, 235, 0.72);
+    --display: 'Bebas Neue', sans-serif;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --content-max: 1200px;
+    --gutter: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-size: 15px;
+  }
+
+  ::selection { background: var(--ox); color: var(--bone); }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ox2);
+  }
+
+  .label {
+    font-family: var(--sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .display {
+    font-family: var(--display);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+  }
+
+  .serif {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14, 14, 14, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 1.25rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--display);
+    font-size: 1.125rem;
+    letter-spacing: 0.18em;
+    color: var(--bone);
+    text-decoration: none;
+  }
+
+  .logo span {
+    color: var(--ox2);
+    margin: 0 0.15em;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 1rem 2rem;
+    font-family: var(--display);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid;
+    background: transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--ox);
+    border-color: var(--ox);
+    color: var(--bone);
+  }
+  .btn-primary:hover {
+    background: var(--ox2);
+    border-color: var(--ox2);
+  }
+
+  .btn-outline {
+    border-color: var(--line-strong);
+    color: var(--bone);
+  }
+  .btn-outline:hover {
+    border-color: var(--bone);
+  }
+
+  .btn-bone {
+    background: var(--bone);
+    border-color: var(--bone);
+    color: var(--black);
+  }
+  .btn-bone:hover {
+    background: var(--bone-soft);
+    border-color: var(--bone-soft);
+  }
+
+  .nav .btn {
+    padding: 0.65rem 1.4rem;
+    font-size: 0.8125rem;
+  }
+
+  section {
+    padding: clamp(5rem, 11vw, 9rem) var(--gutter);
+  }
+
+  .container {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .hero {
+    padding-top: clamp(6rem, 13vw, 10rem);
+    padding-bottom: clamp(6rem, 13vw, 10rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero-meta-top .label {
+    font-size: 0.5625rem;
+  }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero h1 .serif-accent {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ox2);
+    text-transform: none;
+    display: block;
+    font-size: 0.85em;
+    margin-top: 0.1em;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.4vw, 1.0625rem);
+    line-height: 1.7;
+    color: var(--muted-strong);
+    max-width: 56ch;
+    margin-bottom: 3rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .principles {
+    padding: clamp(3rem, 6vw, 4rem) var(--gutter);
+    border-bottom: 1px solid var(--line);
+    background: var(--black);
+  }
+
+  .principles-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .principles-inner { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  }
+
+  .principle .label {
+    color: var(--ox2);
+    margin-bottom: 0.75rem;
+    display: block;
+    font-size: 0.5625rem;
+  }
+
+  .principle p {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    color: var(--bone);
+  }
+
+  .tiers {
+    background: var(--black);
+  }
+
+  .section-head {
+    margin-bottom: clamp(3rem, 7vw, 5rem);
+    max-width: 720px;
+  }
+
+  .section-head .eyebrow {
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-head h2 {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-head h2 .serif-accent {
+    font-family: var(--serif);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--muted-strong);
+    font-size: 0.9em;
+  }
+
+  .section-head .lead {
+    color: var(--muted-strong);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 56ch;
+  }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 880px) {
+    .tier-grid { grid-template-columns: 1fr; }
+  }
+
+  .tier-card {
+    border: 1px solid var(--line);
+    padding: clamp(2.25rem, 4vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--black-soft);
+    transition: border-color 0.3s ease;
+  }
+
+  .tier-card:hover { border-color: var(--line-strong); }
+
+  .tier-card.recommended {
+    border-color: var(--ox);
+    background: linear-gradient(180deg, rgba(107, 31, 31, 0.05) 0%, var(--black-soft) 60%);
+  }
+
+  .tier-tag {
+    position: absolute;
+    top: 0;
+    left: clamp(2.25rem, 4vw, 3.5rem);
+    transform: translateY(-50%);
+    background: var(--ox);
+    color: var(--bone);
+    font-family: var(--display);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    padding: 0.5rem 1rem;
+  }
+
+  .tier-card .label { margin-bottom: 1rem; }
+
+  .tier-card h3 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .tier-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.0625rem;
+    color: var(--muted-strong);
+    margin-bottom: 2rem;
+    line-height: 1.45;
+  }
+
+  .tier-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 0 0 2rem;
+  }
+
+  .tier-for {
+    margin-bottom: 2rem;
+  }
+
+  .tier-for .label { margin-bottom: 0.75rem; }
+
+  .tier-for p {
+    color: var(--muted-strong);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+  }
+
+  .tier-features {
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+
+  .tier-features li {
+    display: flex;
+    gap: 0.875rem;
+    padding: 0.6rem 0;
+    font-size: 0.9375rem;
+    color: var(--muted-strong);
+    line-height: 1.55;
+  }
+
+  .tier-features li::before {
+    content: '—';
+    color: var(--ox2);
+    flex-shrink: 0;
+    margin-top: 0.05em;
+  }
+
+  .tier-pricing {
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .tier-price-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tier-price {
+    font-family: var(--display);
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .tier-price-note {
+    font-family: var(--sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .tier-bitcoin {
+    font-size: 0.8125rem;
+    color: #F7931A;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .tier-cta { width: 100%; }
+
+  .programs { background: var(--black); border-top: 1px solid var(--line); }
+
+  .programs-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .program-card {
+    border: 1px solid var(--line);
+    padding: clamp(2rem, 4vw, 3rem);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+    position: relative;
+    background: var(--black-soft);
+    transition: border-color 0.3s ease;
+  }
+
+  .program-card:hover { border-color: var(--line-strong); }
+
+  .program-card.popular { border-color: rgba(107, 31, 31, 0.45); }
+
+  @media (max-width: 880px) {
+    .program-card { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .program-tag {
+    position: absolute;
+    top: 0;
+    right: clamp(2rem, 4vw, 3rem);
+    transform: translateY(-50%);
+    background: var(--ox);
+    color: var(--bone);
+    font-family: var(--display);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    padding: 0.5rem 1rem;
+  }
+
+  .program-left .label {
+    margin-bottom: 1rem;
+    color: var(--ox2);
+  }
+
+  .program-left h3 {
+    font-family: var(--display);
+    font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    max-width: 12ch;
+  }
+
+  .program-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--muted-strong);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .program-meta {
+    border-top: 1px solid var(--line);
+  }
+
+  .program-meta-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.875rem;
+  }
+
+  .program-meta-item .label { font-size: 0.625rem; }
+
+  .program-meta-item .value {
+    font-family: var(--sans);
+    color: var(--bone);
+    font-weight: 500;
+  }
+
+  .program-right h4 {
+    font-family: var(--sans);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ox2);
+    margin-bottom: 1.25rem;
+  }
+
+  .program-features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .program-features li {
+    display: flex;
+    gap: 0.875rem;
+    padding: 0.55rem 0;
+    font-size: 0.9375rem;
+    color: var(--muted-strong);
+    line-height: 1.55;
+  }
+
+  .program-features li::before {
+    content: '—';
+    color: var(--ox2);
+    flex-shrink: 0;
+  }
+
+  .program-pricing {
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .program-pricing { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
+  .price-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-block .label {
+    margin-bottom: 0.6rem;
+    font-size: 0.5625rem;
+  }
+
+  .price-block-amount {
+    font-family: var(--display);
+    font-size: 1.875rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .price-block-bitcoin {
+    font-size: 0.75rem;
+    color: #F7931A;
+    font-weight: 500;
+  }
+
+  .experience {
+    background: var(--bone);
+    color: var(--black);
+    border-top: 1px solid var(--line);
+  }
+
+  .experience .eyebrow { color: var(--ox); }
+
+  .experience .section-head h2 { color: var(--black); }
+  .experience .section-head h2 .serif-accent { color: rgba(14, 14, 14, 0.55); }
+  .experience .section-head .lead { color: rgba(14, 14, 14, 0.7); }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .experience-grid { grid-template-columns: 1fr; }
+  }
+
+  .week-card {
+    border: 1px solid rgba(14, 14, 14, 0.12);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    background: rgba(14, 14, 14, 0.02);
+    transition: border-color 0.3s ease;
+  }
+
+  .week-card:hover { border-color: rgba(14, 14, 14, 0.28); }
+
+  .week-num {
+    font-family: var(--display);
+    font-size: 0.875rem;
+    letter-spacing: 0.3em;
+    color: var(--ox);
+    margin-bottom: 1rem;
+  }
+
+  .week-card h4 {
+    font-family: var(--display);
+    font-size: 1.875rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .week-card p {
+    color: rgba(14, 14, 14, 0.7);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+
+  .between-calls {
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--ox);
+    background: rgba(107, 31, 31, 0.04);
+    text-align: center;
+  }
+
+  .between-calls .label {
+    color: var(--ox);
+    margin-bottom: 0.75rem;
+    display: block;
+    font-size: 0.625rem;
+  }
+
+  .between-calls p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.0625rem;
+    color: var(--black);
+    line-height: 1.55;
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+
+  .positioning {
+    background: var(--black);
+    border-top: 1px solid var(--line);
+  }
+
+  .positioning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 880px) {
+    .positioning-grid { grid-template-columns: 1fr; }
+  }
+
+  .pillar {
+    padding: 2.5rem 2rem;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .pillar-num {
+    font-family: var(--display);
+    font-size: 2.25rem;
+    color: var(--ox2);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .pillar h3 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .pillar p {
+    color: var(--muted-strong);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+  }
+
+  .faq {
+    background: var(--black);
+    border-top: 1px solid var(--line);
+  }
+
+  .faq .section-head {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--bone);
+    text-align: left;
+    padding: 1.75rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    font-family: var(--serif);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.35;
+    transition: color 0.2s ease;
+  }
+
+  .faq-question:hover { color: var(--muted-strong); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--ox2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq-icon::before { width: 14px; height: 1px; }
+  .faq-icon::after { width: 1px; height: 14px; transition: transform 0.3s ease; }
+
+  .faq-item.open .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-answer-inner {
+    padding: 0 0 1.75rem;
+    color: var(--muted-strong);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+    max-width: 65ch;
+  }
+
+  .faq-item.open .faq-answer { max-height: 500px; }
+
+  .final-cta {
+    background: var(--bone);
+    color: var(--black);
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+
+  .final-cta .eyebrow {
+    color: var(--ox);
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .final-cta h2 {
+    font-family: var(--display);
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--black);
+  }
+
+  .final-cta h2 .serif-accent {
+    font-family: var(--serif);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--ox);
+    display: block;
+    font-size: 0.85em;
+    margin-top: 0.15em;
+  }
+
+  .final-cta p {
+    color: rgba(14, 14, 14, 0.7);
+    max-width: 52ch;
+    margin: 0 auto 3rem;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .final-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .final-cta-signature {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(14, 14, 14, 0.12);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .final-cta-signature .serif {
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .final-cta-signature .label {
+    color: rgba(14, 14, 14, 0.5);
+    font-size: 0.625rem;
+  }
+
+  footer {
+    padding: 3rem var(--gutter);
+    background: var(--black);
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+
+  footer p {
+    font-family: var(--display);
+    font-size: 0.875rem;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+  }
+
+  footer p span { color: var(--ox2); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="Index.html" class="logo">MAG<span>·</span>FITNESS</a>
+    <a href="#tiers" class="btn btn-outline">Get Started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-meta-top">
+      <span class="label">MAG · D03 · Coaching & Programs</span>
+      <span class="label">Cape Town · Worldwide</span>
+    </div>
+
+    <h1>
+      Structured<br>coaching.
+      <span class="serif-accent">Real transformation.</span>
+    </h1>
+
+    <p class="hero-sub">MAG Fitness is a structured coaching practice for people who are done guessing. Choose direct coaching with weekly calls, or follow the same programs on your own. The work is patient. The structure is specific. The results compound.</p>
+
+    <div class="hero-cta">
+      <a href="#tiers" class="btn btn-primary">Start with Coaching</a>
+      <a href="#programs" class="btn btn-outline">Browse Programs</a>
+    </div>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="principles-inner">
+    <div class="principle">
+      <span class="label">01</span>
+      <p>Structure</p>
+    </div>
+    <div class="principle">
+      <span class="label">02</span>
+      <p>Nutrition</p>
+    </div>
+    <div class="principle">
+      <span class="label">03</span>
+      <p>Recovery</p>
+    </div>
+    <div class="principle">
+      <span class="label">04</span>
+      <p>Accountability</p>
+    </div>
+  </div>
+</section>
+
+<section class="tiers" id="tiers">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Choose Your Path</span>
+      <h2>Two tiers. <span class="serif-accent">Same standards.</span></h2>
+      <p class="lead">Both tiers run on the same proven programming. The difference is how much guidance you want along the way.</p>
+    </div>
+
+    <div class="tier-grid">
+
+      <div class="tier-card recommended">
+        <div class="tier-tag">Most Popular</div>
+        <span class="label">Tier One</span>
+        <h3>MAG Coaching</h3>
+        <p class="tier-tagline">Direct coaching, weekly calls, professional accountability.</p>
+        <div class="tier-divider"></div>
+
+        <div class="tier-for">
+          <span class="label">Built For</span>
+          <p>The client who wants structure and a coach in their corner. Someone who values having their training adjusted in real time, their nutrition reviewed weekly, and a qualified set of eyes on their progress every seven days.</p>
+        </div>
+
+        <ul class="tier-features">
+          <li>Your choice of any MAG Fitness program</li>
+          <li>Weekly 30-minute video coaching call (4 calls per cycle)</li>
+          <li>Ongoing program adjustments based on your progress</li>
+          <li>Nutrition check-ins and habit tracking</li>
+          <li>Direct WhatsApp access between calls</li>
+          <li>Full access to the program PDF and supporting materials</li>
+        </ul>
+
+        <div class="tier-pricing">
+          <div class="tier-price-row">
+            <div>
+              <div class="tier-price">R1,499</div>
+              <span class="tier-price-note">EFT · 30-Day Cycle</span>
+            </div>
+            <span class="tier-bitcoin">₿ R1,249 with Bitcoin</span>
+          </div>
+          <a href="Client%20intake.html" class="btn btn-primary tier-cta">Apply for Coaching</a>
+        </div>
+      </div>
+
+      <div class="tier-card">
+        <span class="label">Tier Two</span>
+        <h3>MAG Programs</h3>
+        <p class="tier-tagline">The same systems. Self-directed.</p>
+        <div class="tier-divider"></div>
+
+        <div class="tier-for">
+          <span class="label">Built For</span>
+          <p>The client who wants professional structure and is confident managing their own execution. The training, nutrition framework, and progression model are identical to what coaching clients receive — minus the live calls and direct access.</p>
+        </div>
+
+        <ul class="tier-features">
+          <li>The complete program PDF (premium 23-page format)</li>
+          <li>Full training schedule with sets, reps, and progression model</li>
+          <li>Nutrition framework and meal plan</li>
+          <li>Habit tracker and benchmark protocols</li>
+          <li>Lifetime access and future updates</li>
+        </ul>
+
+        <div class="tier-pricing">
+          <div class="tier-price-row">
+            <div>
+              <div class="tier-price">R549<span style="font-size: 0.6em; color: var(--muted); letter-spacing: 0;">–699</span></div>
+              <span class="tier-price-note">EFT · One-Time</span>
+            </div>
+            <span class="tier-bitcoin">₿ R439–559 with Bitcoin</span>
+          </div>
+          <a href="#programs" class="btn btn-outline tier-cta">Browse Programs</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Programs</span>
+      <h2>Five programs. <span class="serif-accent">One system.</span></h2>
+      <p class="lead">Each program is built on the same four pillars. Choose the one that matches where you are, and where you want to go.</p>
+    </div>
+
+    <div class="programs-grid">
+
+      <div class="program-card">
+        <div class="program-left">
+          <span class="label">MF — 001</span>
+          <h3>30-Day Fat Loss System</h3>
+          <p class="program-tagline">Burn fat. Reshape your body. Build the system behind the result.</p>
+          <div class="program-meta">
+            <div class="program-meta-item"><span class="label">Level</span><span class="value">All Levels</span></div>
+            <div class="program-meta-item"><span class="label">Days / Week</span><span class="value">5 Days</span></div>
+            <div class="program-meta-item"><span class="label">Equipment</span><span class="value">Full Gym</span></div>
+            <div class="program-meta-item"><span class="label">Duration</span><span class="value">30 Days</span></div>
+          </div>
+        </div>
+        <div class="program-right">
+          <h4>What's Inside</h4>
+          <ul class="program-features">
+            <li>Upper · Lower · HIIT · Pump · Legs — five full sessions</li>
+            <li>Cardio finisher options every training day</li>
+            <li>Fat loss nutrition framework with full meal plan</li>
+            <li>Habit tracker and benchmark protocols</li>
+          </ul>
+          <div class="program-pricing">
+            <div class="price-block">
+              <span class="label">Self-Guided</span>
+              <div class="price-block-amount">R549</div>
+              <span class="price-block-bitcoin">₿ R439</span>
+            </div>
+            <div class="price-block">
+              <span class="label">With Coaching</span>
+              <div class="price-block-amount">R1,499</div>
+              <span class="price-block-bitcoin">₿ R1,249</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card popular">
+        <div class="program-tag">Most Popular</div>
+        <div class="program-left">
+          <span class="label">MF — 002</span>
+          <h3>30-Day Muscle Building</h3>
+          <p class="program-tagline">Add real muscle. Build real strength. No filler.</p>
+          <div class="program-meta">
+            <div class="program-meta-item"><span class="label">Level</span><span class="value">Intermediate</span></div>
+            <div class="program-meta-item"><span class="label">Days / Week</span><span class="value">6 Days — PPL</span></div>
+            <div class="program-meta-item"><span class="label">Equipment</span><span class="value">Full Gym</span></div>
+            <div class="program-meta-item"><span class="label">Duration</span><span class="value">30 Days</span></div>
+          </div>
+        </div>
+        <div class="program-right">
+          <h4>What's Inside</h4>
+          <ul class="program-features">
+            <li>Push · Pull · Legs · Glutes · Upper · Arms — six full sessions</li>
+            <li>Progressive overload built into every single week</li>
+            <li>Muscle building nutrition framework with meal plan</li>
+            <li>Logbook system and benchmark protocols</li>
+          </ul>
+          <div class="program-pricing">
+            <div class="price-block">
+              <span class="label">Self-Guided</span>
+              <div class="price-block-amount">R549</div>
+              <span class="price-block-bitcoin">₿ R439</span>
+            </div>
+            <div class="price-block">
+              <span class="label">With Coaching</span>
+              <div class="price-block-amount">R1,499</div>
+              <span class="price-block-bitcoin">₿ R1,249</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-left">
+          <span class="label">MF — 003</span>
+          <h3>30-Day Home Workout</h3>
+          <p class="program-tagline">No gym. No excuses. Just structure that works.</p>
+          <div class="program-meta">
+            <div class="program-meta-item"><span class="label">Level</span><span class="value">All Levels</span></div>
+            <div class="program-meta-item"><span class="label">Days / Week</span><span class="value">5 Days</span></div>
+            <div class="program-meta-item"><span class="label">Equipment</span><span class="value">Bands + Bodyweight</span></div>
+            <div class="program-meta-item"><span class="label">Duration</span><span class="value">30 Days</span></div>
+          </div>
+        </div>
+        <div class="program-right">
+          <h4>What's Inside</h4>
+          <ul class="program-features">
+            <li>Upper · Lower · HIIT · Shoulders+Arms · Lower+Core</li>
+            <li>4-week band progression model</li>
+            <li>Dual-mode nutrition (fat loss or toning) with meal plan</li>
+            <li>Habit tracker and benchmark protocols</li>
+          </ul>
+          <div class="program-pricing">
+            <div class="price-block">
+              <span class="label">Self-Guided</span>
+              <div class="price-block-amount">R549</div>
+              <span class="price-block-bitcoin">₿ R439</span>
+            </div>
+            <div class="price-block">
+              <span class="label">With Coaching</span>
+              <div class="price-block-amount">R1,499</div>
+              <span class="price-block-bitcoin">₿ R1,249</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-left">
+          <span class="label">MF — 004</span>
+          <h3>30-Day Advanced Hypertrophy</h3>
+          <p class="program-tagline">Maximum volume. Maximum tension. Maximum muscle.</p>
+          <div class="program-meta">
+            <div class="program-meta-item"><span class="label">Level</span><span class="value">Advanced (2+ years)</span></div>
+            <div class="program-meta-item"><span class="label">Days / Week</span><span class="value">6 Days — PPL × 2</span></div>
+            <div class="program-meta-item"><span class="label">Equipment</span><span class="value">Full Gym</span></div>
+            <div class="program-meta-item"><span class="label">Duration</span><span class="value">30 Days</span></div>
+          </div>
+        </div>
+        <div class="program-right">
+          <h4>What's Inside</h4>
+          <ul class="program-features">
+            <li>Push A/B · Pull A/B · Legs A/B — 20–25 sets per muscle</li>
+            <li>4-week block periodisation (accumulate → intensify → deload)</li>
+            <li>Lean bulk nutrition with creatine protocol</li>
+            <li>Full logbook and benchmark protocols</li>
+          </ul>
+          <div class="program-pricing">
+            <div class="price-block">
+              <span class="label">Self-Guided</span>
+              <div class="price-block-amount">R699</div>
+              <span class="price-block-bitcoin">₿ R559</span>
+            </div>
+            <div class="price-block">
+              <span class="label">With Coaching</span>
+              <div class="price-block-amount">R1,499</div>
+              <span class="price-block-bitcoin">₿ R1,249</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-card">
+        <div class="program-left">
+          <span class="label">MF — 005</span>
+          <h3>30-Day Athlete Conditioning</h3>
+          <p class="program-tagline">Speed. Power. Endurance. Train to perform.</p>
+          <div class="program-meta">
+            <div class="program-meta-item"><span class="label">Level</span><span class="value">Athletic / Advanced</span></div>
+            <div class="program-meta-item"><span class="label">Days / Week</span><span class="value">6 Days</span></div>
+            <div class="program-meta-item"><span class="label">Equipment</span><span class="value">Gym + Track</span></div>
+            <div class="program-meta-item"><span class="label">Duration</span><span class="value">30 Days</span></div>
+          </div>
+        </div>
+        <div class="program-right">
+          <h4>What's Inside</h4>
+          <ul class="program-features">
+            <li>Power · Sprint · Strength+Plyo · Aerobic · HIIT+Upper</li>
+            <li>All three energy systems trained — phosphocreatine, glycolytic, aerobic</li>
+            <li>Performance nutrition with electrolyte protocol</li>
+            <li>Benchmark tracker, retest week 4</li>
+          </ul>
+          <div class="program-pricing">
+            <div class="price-block">
+              <span class="label">Self-Guided</span>
+              <div class="price-block-amount">R699</div>
+              <span class="price-block-bitcoin">₿ R559</span>
+            </div>
+            <div class="price-block">
+              <span class="label">With Coaching</span>
+              <div class="price-block-amount">R1,499</div>
+              <span class="price-block-bitcoin">₿ R1,249</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Coaching Experience</span>
+      <h2>What coaching <span class="serif-accent">actually looks like.</span></h2>
+      <p class="lead">A weekly call is only as valuable as what happens inside it. Here is what a 30-day coaching cycle delivers.</p>
+    </div>
+
+    <div class="experience-grid">
+      <div class="week-card">
+        <div class="week-num">Week One</div>
+        <h4>Foundation Call</h4>
+        <p>A 30-minute video call to review your program, walk through technique on key lifts, set baseline measurements, and align on nutrition. You leave with a clear plan for the week ahead.</p>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week Two</div>
+        <h4>Progress Call</h4>
+        <p>Review your first week of training and nutrition data. Adjust load, volume, or meal structure based on real performance. Address any technique issues before they become habits.</p>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week Three</div>
+        <h4>Mid-Cycle Call</h4>
+        <p>Halfway through. We assess what is working, what is not, and recalibrate the back half of the program. This is where most clients break through their first plateau.</p>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week Four</div>
+        <h4>Performance Call</h4>
+        <p>Final review of the cycle. Re-test your benchmarks, measure progress against week one, and plan the next 30 days. Coaching clients typically continue into a second cycle.</p>
+      </div>
+    </div>
+
+    <div class="between-calls">
+      <span class="label">Between Calls</span>
+      <p>Direct WhatsApp access for technique questions, nutrition adjustments, or anything that comes up. Responses within 24 hours, typically same-day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="positioning">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why MAG Fitness</span>
+      <h2>Why this <span class="serif-accent">works.</span></h2>
+      <p class="lead">Three things separate this practice from the noise.</p>
+    </div>
+
+    <div class="positioning-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3>Systems over motivation</h3>
+        <p>Motivation is unreliable. Structure is not. Every program is built on a defined system you can follow on your worst day, not just your best one.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3>Professional standards</h3>
+        <p>Programming is built on Sports Science principles, not Instagram trends. Nutrition frameworks are grounded in established research. Coaching is delivered with the rigour you would expect from a physio or registered dietician.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h3>Clarity, not noise</h3>
+        <p>No fluff. No filler sessions. No "secret" methodologies. The programs are short, deliberate, and engineered to produce measurable results inside 30 days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Answered.</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">How do I pay?<span class="faq-icon"></span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">EFT (instant bank transfer) or Bitcoin. Bitcoin clients receive a 17% discount across all tiers. Payment details are sent immediately after you order.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How do I receive my program?<span class="faq-icon"></span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Self-guided programs are delivered as a PDF within 24 hours of payment confirmation. Coaching clients receive their program PDF along with the Foundation document and an onboarding email containing their first call booking link.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I switch programs partway through?<span class="faq-icon"></span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">It is not recommended. Each program is designed as a 30-day system, and switching mid-cycle disrupts the progression model. Coaching clients can discuss program changes directly during their weekly call.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What if I am a complete beginner?<span class="faq-icon"></span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">MF–001 (Fat Loss), MF–002 (Muscle Building), and MF–003 (Home Workout) are all suitable for beginners. If you are unsure where to start, the coaching tier includes a foundation call that places you in the right program.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do you offer refunds?<span class="faq-icon"></span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Programs are non-refundable once delivered. Coaching cycles are non-refundable once started, but unused calls within a cycle can be carried forward to the following month if needed.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Where are you based?<span class="faq-icon"></span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Cape Town, South Africa. Coaching is delivered remotely via video call, so location is not a barrier. Clients are welcome from anywhere.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="apply">
+  <div class="container">
+    <span class="eyebrow">Begin</span>
+    <h2>Ready to start.<span class="serif-accent">The work is patient.</span></h2>
+    <p>Two paths. Same standards. Choose the one that fits where you are right now. You can always upgrade into coaching later.</p>
+    <div class="final-cta-buttons">
+      <a href="Client%20intake.html" class="btn btn-primary">Apply for Coaching — R1,499</a>
+      <a href="#programs" class="btn btn-outline" style="border-color: rgba(14,14,14,0.2); color: var(--black);">Browse Programs</a>
+    </div>
+    <div class="final-cta-signature">
+      <span class="serif">The structure is mine. The results are yours.</span>
+      <span class="label">Matthew Aiden Gordon · Coach, MAG Fitness</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>MAG <span>·</span> FITNESS <span>·</span> CAPE TOWN <span>·</span> EST 2025</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('section').forEach(s => {
+    s.classList.add('reveal');
+    observer.observe(s);
+  });
+</script>
+
+</body>
+</html>
